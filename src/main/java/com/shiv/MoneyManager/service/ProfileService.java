@@ -35,7 +35,7 @@ public class ProfileService {
 
     private  final JWTUtil jwtUtil;
 
-    @Value("$app.activation.url")
+    @Value("${app.activation.url}")
     private String activationURL;
 
 
