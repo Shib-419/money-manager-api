@@ -35,10 +35,6 @@ public class ProfileService {
 
     private  final JWTUtil jwtUtil;
 
-    @Value("${app.activation.url}")
-    private String activationURL;
-
-
     /**
      * registerProfile()
      * Desi Style: Ye method naya user register karta hai.
@@ -60,7 +56,7 @@ public class ProfileService {
         newProfile = profileRepository.save(newProfile);
 
         // Step 4: Email bhejo user ko activation link ke saath
-        String activationLink = activationURL+"/api/v1.0/activate?token=" + newProfile.getActivationToken();
+        String activationLink = "https://money-manager-api-a2fv.onrender.com/api/v1.0/activate?token=" + newProfile.getActivationToken();
         String subject = "Activate your Money Manager account";
         String body = "Click on the following link to activate your account " + activationLink;
         emailService.sendEmail(newProfile.getEmail(), subject, body);
